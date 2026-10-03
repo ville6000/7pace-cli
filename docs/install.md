@@ -22,6 +22,7 @@ BASE=https://github.com/ville6000/7pace-cli/releases/latest/download
 curl -fsSLO "$BASE/7pace-cli_$PLATFORM.tar.gz"
 curl -fsSLO "$BASE/checksums.txt"
 grep "7pace-cli_$PLATFORM.tar.gz" checksums.txt | shasum -a 256 -c
+gh attestation verify "7pace-cli_$PLATFORM.tar.gz" --repo ville6000/7pace-cli
 tar -xzf "7pace-cli_$PLATFORM.tar.gz" 7pace-cli
 sudo mv 7pace-cli /usr/local/bin/
 ```
@@ -30,8 +31,12 @@ On Windows, download `7pace-cli_windows_amd64.zip` (or `_arm64`) from the
 [latest release](https://github.com/ville6000/7pace-cli/releases/latest),
 extract `7pace-cli.exe` and put it in a folder on your `PATH`.
 
-The binaries aren't signed. On macOS, a binary downloaded with a browser rather
-than `curl` is quarantined by Gatekeeper; allow it with
+The `gh attestation verify` line (needs the [GitHub CLI](https://cli.github.com))
+checks the archive was built by this repo's release workflow; skip it if you
+don't have `gh`.
+
+The binaries aren't code-signed. On macOS, a binary downloaded with a browser
+rather than `curl` is quarantined by Gatekeeper; allow it with
 `xattr -d com.apple.quarantine 7pace-cli`.
 
 ## With Go
