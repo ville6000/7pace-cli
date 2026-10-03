@@ -22,7 +22,8 @@ BASE=https://github.com/ville6000/7pace-cli/releases/latest/download
 curl -fsSLO "$BASE/7pace-cli_$PLATFORM.tar.gz"
 curl -fsSLO "$BASE/checksums.txt"
 grep "7pace-cli_$PLATFORM.tar.gz" checksums.txt | shasum -a 256 -c
-gh attestation verify "7pace-cli_$PLATFORM.tar.gz" --repo ville6000/7pace-cli
+gh attestation verify "7pace-cli_$PLATFORM.tar.gz" --repo ville6000/7pace-cli \
+  --signer-workflow ville6000/7pace-cli/.github/workflows/release.yml
 tar -xzf "7pace-cli_$PLATFORM.tar.gz" 7pace-cli
 sudo mv 7pace-cli /usr/local/bin/
 ```
