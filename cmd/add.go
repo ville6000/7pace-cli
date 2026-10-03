@@ -96,10 +96,10 @@ func newAddCmd(v *viper.Viper) *cobra.Command {
 		},
 	}
 
-	cmd.Flags().Int("work-item", 0, "Azure DevOps work item id")
-	cmd.Flags().String("comment", "", "Worklog comment")
-	cmd.Flags().String("duration", "", "Duration, e.g. 1h30m or a number of seconds")
-	cmd.Flags().String("date", "", "Date/time of the worklog: YYYY-MM-DD or \"YYYY-MM-DD HH:MM\" (default now)")
+	cmd.Flags().IntP("work-item", "w", 0, "Azure DevOps work item id")
+	cmd.Flags().StringP("comment", "c", "", "Worklog comment")
+	cmd.Flags().StringP("duration", "d", "", "Duration, e.g. 1h30m or a number of seconds")
+	cmd.Flags().StringP("date", "D", "", "Date/time of the worklog: YYYY-MM-DD or \"YYYY-MM-DD HH:MM\" (default now)")
 	cmd.Flags().String("activity-type", "", "Activity type UUID (overrides config)")
 
 	return cmd

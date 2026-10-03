@@ -106,6 +106,9 @@ toggl-cli history --week --json > week.json
 ```sh
 7pace-cli add --work-item 1234 --duration 1h30m --comment "code review"
 7pace-cli add --comment "planning" --duration 45m --date "2024-06-03 09:00"
+
+# Short flags: -w work item, -d duration, -c comment, -D date
+7pace-cli add -w 1234 -d 1h30m -c "code review"
 ```
 
 A worklog needs a work item (`--work-item`) or a comment (`--comment`), and a
