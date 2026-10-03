@@ -1,6 +1,6 @@
 module github.com/ville6000/7pace-cli
 
-go 1.26.1
+go 1.26.0
 
 require (
 	github.com/Azure/go-ntlmssp v0.1.1

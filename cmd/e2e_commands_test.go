@@ -5,6 +5,7 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
+	"runtime"
 	"strings"
 	"testing"
 	"time"
@@ -344,6 +345,10 @@ func TestConfigCommand_WritesTheConfigFile(t *testing.T) {
 		}
 	}
 
+	// Windows has no Unix permission bits; Go reports 0666 for any writable file.
+	if runtime.GOOS == "windows" {
+		return
+	}
 	info, err := os.Stat(configPath)
 	if err != nil {
 		t.Fatalf("stat config: %v", err)
