@@ -21,6 +21,14 @@ $ 7pace-cli add --work-item 1234 --duration 1h30m --comment "code review"
 
 ## Installation
 
+### Homebrew
+
+On macOS and Linux:
+
+```sh
+brew install ville6000/tap/7pace-cli
+```
+
 ### Prebuilt binaries
 
 Each [release](https://github.com/ville6000/7pace-cli/releases) has archives for
