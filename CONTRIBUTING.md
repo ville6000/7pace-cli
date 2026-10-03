@@ -6,7 +6,7 @@ the approach can be agreed on before you write the code.
 
 ## Development setup
 
-You need Go (the version in `go.mod`), [gofumpt](https://github.com/mvdan/gofumpt)
+You need Go 1.26, [gofumpt](https://github.com/mvdan/gofumpt)
 and [golangci-lint](https://golangci-lint.run). The pinned versions are in
 `mise.toml`; with [mise](https://mise.jdx.dev) installed, get them all with:
 
@@ -31,8 +31,9 @@ make format   # gofumpt -l -w .
 make lint     # golangci-lint run ./...
 ```
 
-CI runs the build, the tests and golangci-lint on every pull request, using the
-same golangci-lint version as `mise.toml`. Run `make format lint test` before
+CI runs the build, the tests (with the race detector, and on macOS and
+Windows), govulncheck and golangci-lint on every pull request, using the same
+golangci-lint version as `mise.toml`. Run `make format lint test` before
 pushing.
 
 The command tests in `cmd/e2e_*_test.go` run the whole CLI against a local stub
